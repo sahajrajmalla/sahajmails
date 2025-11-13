@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sahajmails"
+version = "1.0.0"
+description = "Simple, secure bulk email sender using Gmail + Streamlit"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Sahaj Raj Malla", email = "mallasahajraj@gmail.com" }
+]
+keywords = [
+    "email", "bulk-email", "streamlit", "gmail", "marketing", "personalization", "csv"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Developers",
+    "Topic :: Communications :: Email",
+    "Topic :: Office/Business"
+]
+dependencies = [
+    "streamlit>=1.29.0",
+    "pandas>=2.0.0",
+    "markdown>=3.4.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/sahajrajmalla/sahajmails"
+Repository = "https://github.com/sahajrajmalla/sahajmails"
+Documentation = "https://github.com/sahajrajmalla/sahajmails/blob/main/docs/USER_GUIDE.md"
+Issues = "https://github.com/sahajrajmalla/sahajmails/issues"
+
+[project.scripts]
+sahajmails = "sahajmails.cli:main"
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+dev = [
+    "build>=1.0",
+    "twine>=4.0",
+    "black>=23.0",
+    "flake8>=6.0",
+    "pytest>=7.0"
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
