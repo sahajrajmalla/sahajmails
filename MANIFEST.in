@@ -1,0 +1,17 @@
+# MANIFEST.in
+# Include top-level metadata & documentation
+include LICENSE
+include README.md
+include requirements.txt
+
+# Include documentation
+recursive-include docs *.md
+
+# Include the entire package (source + data)
+recursive-include sahajmails *.py
+
+# Include tests (optional but recommended for open-source)
+recursive-include tests *.py
+
+# Include any static assets (if you add images, templates, etc. later)
+# global-include *.png *.jpg *.svg *.css *.js
