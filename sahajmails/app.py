@@ -211,8 +211,10 @@ def main() -> None:
                         msg = create_mime_message(sender_email, sender_email, subject, html_body, attachment_data)
                         server.sendmail(sender_email, sender_email, msg.as_string())
                         server.quit()
+                        app_password = None  # Clears sensitive credential from memory
                         st.success(f"Test sent to **{sender_email}**!")
                         st.balloons()
+
                     except smtplib.SMTPAuthenticationError:
                         st.error("Invalid App Password or 2FA not enabled.")
                     except Exception as e:
@@ -244,6 +246,7 @@ def main() -> None:
                         log.markdown("\n".join(logs), unsafe_allow_html=True)
                         progress.progress((i + 1) / len(df))
                     server.quit()
+                    app_password = None  # Clears sensitive credential from memory
                     st.success(f"Bulk send complete: **{len(df)} emails** sent.")
                     st.balloons()
                 except Exception as e:
