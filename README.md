@@ -9,8 +9,10 @@ No servers. No coding. Just upload, type, send.
 [![PyPI version](https://badge.fury.io/py/sahajmails.svg)](https://badge.fury.io/py/sahajmails)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Tutorial](https://img.shields.io/badge/Tutorial-Medium-orange)](https://mallasahajraj.medium.com/how-to-send-personalized-bulk-emails-for-free-with-sahajmails-44f86d49d0a0)
 
 </div>
+
 
 ---
 
