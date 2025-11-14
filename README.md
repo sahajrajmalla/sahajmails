@@ -42,6 +42,7 @@ Open [http://localhost:8501](http://localhost:8501)
 
 ## 7-Step Guide
 
+
 1. **Upload** your contact list (must have `email` column)  
 2. **Enter** your Gmail and **App Password**  
 3. **Compose** email using `{{ columnName }}` placeholders  
@@ -56,6 +57,29 @@ email,firstName,company
 alice@example.com,Alice,Acme Corp
 bob@work.com,Bob,StartupXYZ
 ```
+
+<div align="center">
+
+  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/1.png?raw=true" alt="Upload contacts and preview" width="100%"/>
+  <p><i>1. Upload CSV/Excel – Instant contact preview with detected columns</i></p>
+
+  <br><br>
+
+  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/2.png?raw=true" alt="Gmail login and email composer" width="100%"/>
+  <p><i>2–3. Secure Gmail login • Rich editor with one-click placeholder buttons</i></p>
+
+  <br><br>
+
+  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/3.png?raw=true" alt="Live preview and attachments" width="100%"/>
+  <p><i>4–5. Real-time live preview • Optional file attachments (up to 200 MB each)</i></p>
+
+  <br><br>
+
+  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/4.png?raw=true" alt="Bulk sending with progress tracking" width="100%"/>
+  <p><i>6–7. Send test email • Start bulk send with real-time progress and completion status</i></p>
+
+</div>
+
 
 ---
 
