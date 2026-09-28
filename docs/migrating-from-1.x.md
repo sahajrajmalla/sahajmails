@@ -38,11 +38,13 @@ Formatted, Plain, Markdown or HTML — Plain is what you want for a formal lette
 ```python
 # 1.x
 from sahajmails.app import build_personalized_body, render_email_body
+
 body = build_personalized_body(template, row, columns)
 html = render_email_body(body)
 
 # 2.0
 from sahajmails import EmailTemplate, load_contacts
+
 template = EmailTemplate(subject="Hi {{ first_name }}", body=body_source)
 rendered = template.render(load_contacts("contacts.csv").contacts[0])
 rendered.html, rendered.text

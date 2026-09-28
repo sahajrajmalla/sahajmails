@@ -12,6 +12,7 @@ A plugin is a module with a `register(registry)` function.
 
 ```python
 """sahajmails_slack — post to Slack after every send."""
+
 import httpx
 
 WEBHOOK = "https://hooks.slack.com/services/..."

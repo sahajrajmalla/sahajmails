@@ -83,8 +83,7 @@ Or import it:
 ```python
 from sahajmails import send
 
-send(contacts="contacts.csv", template="email.md",
-     subject="Hello {{ first_name }}")
+send(contacts="contacts.csv", template="email.md", subject="Hello {{ first_name }}")
 ```
 
 ---

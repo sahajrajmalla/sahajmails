@@ -12,7 +12,7 @@ report = send(
     template="email.md",
     subject="Hello {{ first_name }}",
 )
-print(report.summary())      # "48 sent, 2 failed"
+print(report.summary())  # "48 sent, 2 failed"
 ```
 
 ## Full control
@@ -33,7 +33,7 @@ template = EmailTemplate(
     preheader="A short note about your account",
 )
 
-repo = Repository(Database())          # enables resume and history
+repo = Repository(Database())  # enables resume and history
 sender = BulkSender(
     template=template,
     contacts=contacts,
@@ -80,8 +80,8 @@ from sahajmails import SahajMailsError
 try:
     send(...)
 except SahajMailsError as exc:
-    print(exc)          # what went wrong
-    print(exc.hint)     # what to do about it
+    print(exc)  # what went wrong
+    print(exc.hint)  # what to do about it
 ```
 
 ## Testing against it
