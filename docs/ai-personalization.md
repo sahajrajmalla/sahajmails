@@ -42,6 +42,8 @@ Slot names must be unique; they are how approved text is matched back.
 
 ## Providers
 
+<img src="../assets/ai_settings.png" width="800" alt="AI Configuration View">
+
 | Provider | Notes |
 |---|---|
 | **Anthropic** | Default `claude-sonnet-5`. Uses prompt caching, which is where most of the cost saving on a large run comes from. |

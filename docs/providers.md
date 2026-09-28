@@ -3,6 +3,8 @@
 Pick a preset and the host, port, encryption, rate limit and daily cap are
 filled in for you. `sahajmails providers` lists them all.
 
+<img src="../assets/settings.png" width="800" alt="Settings Configuration View">
+
 | Key | Provider | Host | Port | Daily |
 |---|---|---|---|---|
 | `gmail` | Gmail | smtp.gmail.com | 587 | 500 |

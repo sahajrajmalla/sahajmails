@@ -68,6 +68,8 @@ people will receive.
 
 ## Review, then send
 
+<img src="../assets/campaigns.png" width="800" alt="Campaigns Dashboard">
+
 **Review** runs pre-flight: it renders *every* contact, checks your addresses,
 your DNS records, your content, and your provider limits. Then send yourself a
 test — it uses your first contact's data, so it is exactly what they will get.
@@ -75,6 +77,8 @@ test — it uses your first contact's data, so it is exactly what they will get.
 **Send** shows the count, the first few recipients, and any warnings before it
 starts. You can pause, resume or stop mid-run, and if anything crashes you can
 resume without mailing anyone twice.
+
+<img src="../assets/runs.png" width="800" alt="Campaign Runs History">
 
 ## Next
 

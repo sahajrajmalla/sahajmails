@@ -46,6 +46,8 @@ failed to resolve.
 
 ## Bounces
 
+<img src="../assets/suppressed.png" width="800" alt="Suppressed Addresses View">
+
 Sending repeatedly to dead addresses is the fastest way to ruin a sending
 reputation. Add hard bounces to the suppression list, which is enforced on every
 campaign automatically:

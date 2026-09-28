@@ -13,7 +13,7 @@
 [![License](https://img.shields.io/badge/license-MIT-0e8f5d)](LICENSE)
 [![CI](https://github.com/sahajrajmalla/sahajmails/actions/workflows/ci.yml/badge.svg)](https://github.com/sahajrajmalla/sahajmails/actions)
 
-<img src="docs/app_screenshot.png" width="800" alt="SahajMails Web UI Screenshot">
+<img src="assets/campaigns.png" width="800" alt="SahajMails Campaigns View">
 
 </div>
 
@@ -43,6 +43,18 @@ no account, no server of ours, and no telemetry.
 | **Lands in inboxes** | Plain-text alternative, `List-Unsubscribe`, preheader, SPF/DKIM/DMARC check, spam-content linter. |
 | **Tells you before you send** | Pre-flight renders *every* contact and reports what will break. |
 | **Extensible** | Plugins add transports, AI providers, contact sources and UI panels. |
+
+---
+
+## App Preview
+
+| Campaigns & Setup | Execution & Logs |
+| :---: | :---: |
+| <img src="assets/settings.png" width="400" alt="Settings configuration"> | <img src="assets/runs.png" width="400" alt="Run history"> |
+| **AI Personalization** | **Plugins & Extensibility** |
+| <img src="assets/ai_settings.png" width="400" alt="AI integration"> | <img src="assets/plugins.png" width="400" alt="Plugin management"> |
+| **Deliverability** | **Suppression List** |
+| <img src="assets/suppressed.png" width="400" alt="Suppressed emails"> | <img src="assets/campaigns.png" width="400" alt="Campaign dashboard"> |
 
 ---
 

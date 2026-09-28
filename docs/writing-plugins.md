@@ -6,6 +6,8 @@ A plugin is a module with a `register(registry)` function.
 > `pip install` — there is no sandbox, and pretending otherwise would be worse
 > than saying so.
 
+<img src="../assets/plugins.png" width="800" alt="Plugins Configuration View">
+
 ## A worked example
 
 ```python
