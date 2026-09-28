@@ -28,7 +28,7 @@ and a local web application.
   send console over Server-Sent Events, pause/resume/cancel, run history.
 - **Four body formats** — formatted (rich text), plain, Markdown, and raw HTML.
 - **AI personalization** via `{% ai %}` slots. The model fills only the labelled
-  gap; review and edit before anything sends. OpenAI, and any
+  gap; review and edit before anything sends. Claude, OpenAI, and any
   OpenAI-compatible endpoint including local Ollama and LM Studio.
 - **Resume** — an append-only ledger means a crashed run never double-sends.
 - **Pre-flight** — renders every contact and reports problems before you send.

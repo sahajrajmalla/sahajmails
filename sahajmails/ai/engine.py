@@ -344,6 +344,9 @@ def _token_budget(slot: AISlot) -> int:
 # Published list prices per million tokens (input, output). Only used for the
 # pre-send estimate, so being slightly stale costs nothing but a rough number.
 _PRICES: dict[str, tuple[float, float]] = {
+    "claude-opus-5": (15.0, 75.0),
+    "claude-sonnet-5": (3.0, 15.0),
+    "claude-haiku-4-5": (1.0, 5.0),
     "gpt-4.1": (2.0, 8.0),
     "gpt-4.1-mini": (0.4, 1.6),
     "gpt-4o-mini": (0.15, 0.6),

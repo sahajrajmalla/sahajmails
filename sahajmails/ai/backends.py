@@ -1,7 +1,7 @@
 """Concrete AI backends.
 
 All of them are plain JSON POSTs over ``httpx``. Vendoring the official
-``openai`` SDK would add tens of megabytes and a release
+``anthropic`` and ``openai`` SDKs would add tens of megabytes and a release
 treadmill to gain nothing — the request we make is a single, stable endpoint.
 
 ``openai-compatible`` is the important one: Ollama, LM Studio, vLLM,
@@ -21,7 +21,7 @@ import httpx
 from ..errors import AIError
 from .base import Completion, register_backend
 
-__all__ = ["PROVIDERS", "OpenAIBackend", "OpenAICompatibleBackend"]
+__all__ = ["PROVIDERS", "AnthropicBackend", "OpenAIBackend", "OpenAICompatibleBackend"]
 
 _TIMEOUT = httpx.Timeout(60.0, connect=10.0)
 _RETRY_STATUS = frozenset({408, 429, 500, 502, 503, 504})
@@ -30,6 +30,15 @@ _MAX_ATTEMPTS = 4
 
 #: Advertised to the UI so the provider picker can explain itself.
 PROVIDERS: list[dict[str, Any]] = [
+    {
+        "key": "anthropic",
+        "label": "Anthropic (Claude)",
+        "needs_key": True,
+        "needs_base_url": False,
+        "models": ["claude-sonnet-5", "claude-opus-5", "claude-haiku-4-5-20251001"],
+        "hint": "Create a key at console.anthropic.com. Sonnet 5 is the best value for "
+        "short personalized sentences.",
+    },
     {
         "key": "openai",
         "label": "OpenAI",
@@ -141,6 +150,70 @@ def _status_hint(status: int) -> str:
 
 
 @dataclass
+class AnthropicBackend(_HttpBackend):
+    """Anthropic Messages API, with prompt caching on the shared prefix.
+
+    Every recipient sees the same instruction and differs only in a handful of
+    variables, which is precisely the shape prompt caching exists for — it turns
+    the bulk of a large run into cache reads.
+    """
+
+    name: str = "anthropic"
+    model: str = "claude-sonnet-5"
+    api_version: str = "2023-06-01"
+
+    def complete(
+        self,
+        *,
+        system: str,
+        prompt: str,
+        max_tokens: int = 400,
+        temperature: float = 0.4,
+        cacheable_prefix: str = "",
+    ) -> Completion:
+        if not self.api_key:
+            raise AIError("No Anthropic API key set.", hint="Add one on the AI page.")
+
+        blocks: list[dict[str, Any]] = []
+        if cacheable_prefix:
+            blocks.append(
+                {
+                    "type": "text",
+                    "text": cacheable_prefix,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            )
+        if system:
+            blocks.append({"type": "text", "text": system})
+
+        data = self._post(
+            (self.base_url or "https://api.anthropic.com").rstrip("/") + "/v1/messages",
+            {
+                "x-api-key": self.api_key,
+                "anthropic-version": self.api_version,
+                "content-type": "application/json",
+            },
+            {
+                "model": self.model,
+                "max_tokens": max_tokens,
+                "temperature": temperature,
+                "system": blocks or system,
+                "messages": [{"role": "user", "content": prompt}],
+            },
+        )
+
+        parts = [b.get("text", "") for b in data.get("content", []) if b.get("type") == "text"]
+        usage = data.get("usage", {})
+        return Completion(
+            text="".join(parts).strip(),
+            tokens_in=int(usage.get("input_tokens", 0)),
+            tokens_out=int(usage.get("output_tokens", 0)),
+            cached_tokens=int(usage.get("cache_read_input_tokens", 0)),
+            model=str(data.get("model", self.model)),
+        )
+
+
+@dataclass
 class OpenAIBackend(_HttpBackend):
     """OpenAI chat completions."""
 
@@ -238,6 +311,7 @@ class OpenAICompatibleBackend(OpenAIBackend):
 def _register_builtins() -> None:
     from .base import FakeBackend
 
+    register_backend("anthropic", AnthropicBackend)
     register_backend("openai", OpenAIBackend)
     register_backend("openai-compatible", OpenAICompatibleBackend)
     register_backend("fake", lambda **kw: FakeBackend())

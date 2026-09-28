@@ -44,6 +44,7 @@ Slot names must be unique; they are how approved text is matched back.
 
 | Provider | Notes |
 |---|---|
+| **Anthropic** | Default `claude-sonnet-5`. Uses prompt caching, which is where most of the cost saving on a large run comes from. |
 | **OpenAI** | `gpt-4.1-mini` and friends. |
 | **OpenAI-compatible** | Ollama, LM Studio, vLLM, llama.cpp, Groq, OpenRouter, Together. Point `base_url` at it. |
 | **Offline demo** | Predictable placeholder text. Try the whole flow with no key. |

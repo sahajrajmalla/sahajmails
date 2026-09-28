@@ -115,7 +115,7 @@ I'm writing because …
 - Anything that fails becomes your `fallback`. A flaky API can never block a send.
 - **You review every line before anything is sent**, and your edits are used verbatim.
 
-Works with OpenAI or any OpenAI-compatible endpoint — including
+Works with Claude, OpenAI, or any OpenAI-compatible endpoint — including
 **Ollama and LM Studio running locally**, so the "nothing leaves your machine"
 promise stays true.
 
