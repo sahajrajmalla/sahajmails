@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest something
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This tool does bulk email well and deliberately stays narrow. Things
+        outside that scope are usually a better fit for a plugin — see
+        docs/writing-plugins.md.
+  - type: textarea
+    attributes:
+      label: The problem
+      description: What are you trying to do that is hard or impossible today?
+    validations: { required: true }
+  - type: textarea
+    attributes:
+      label: What you have in mind
+  - type: checkboxes
+    attributes:
+      options:
+        - label: This makes sending bulk email work better, rather than adding a new product area

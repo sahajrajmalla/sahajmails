@@ -1,0 +1,65 @@
+name: Release
+
+# Publishes to PyPI via Trusted Publishing (OIDC). There is no API token in
+# repository secrets — configure the publisher once at
+# https://pypi.org/manage/project/sahajmails/settings/publishing/
+#   owner: sahajrajmalla   repo: sahajmails
+#   workflow: release.yml  environment: pypi
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip build twine
+      - run: python -m build
+      - run: twine check --strict dist/*
+      - name: Assert the tag matches the package version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          python - <<'PY'
+          import os, pathlib, re
+          tag = os.environ["GITHUB_REF_NAME"].removeprefix("v")
+          wheel = next(pathlib.Path("dist").glob("*.whl")).name
+          version = re.match(r"sahajmails-([^-]+)-", wheel).group(1)
+          assert tag == version, f"tag {tag!r} != package version {version!r}"
+          print(f"tag and version agree: {version}")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/p/sahajmails
+    permissions:
+      id-token: write     # required for Trusted Publishing
+      attestations: write # required for provenance attestations
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: "dist/*"
+      - uses: pypa/gh-action-pypi-publish@release/v1

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="SahajMails">
+  <title>SahajMails</title>
+  <defs>
+    <linearGradient id="sm-bg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1FBF77"/>
+      <stop offset="1" stop-color="#0A7A4B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="40" height="40" rx="11" fill="url(#sm-bg)"/>
+
+  <!-- Envelope: the object. -->
+  <rect x="8" y="11.5" width="24" height="17" rx="2.8"
+        fill="none" stroke="#fff" stroke-width="2.1" opacity=".97"/>
+  <path d="M9.4 13.4 20 21.2 30.6 13.4"
+        fill="none" stroke="#fff" stroke-width="2.1"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Delivered check: the outcome. Punched out of the envelope so the mark
+       reads as one shape rather than two stacked glyphs. -->
+  <circle cx="30.5" cy="28.5" r="8.2" fill="url(#sm-bg)"/>
+  <circle cx="30.5" cy="28.5" r="6.6" fill="#fff"/>
+  <path d="M27.4 28.7 29.7 31 33.7 26.3"
+        fill="none" stroke="#0A7A4B" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
