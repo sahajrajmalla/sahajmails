@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/sahajmails/server/static/img/logo.svg" width="72" alt="SahajMails">
+<img src="sahajmails/server/static/img/logo.svg" width="72" alt="SahajMails">
 
-# SahajMails
+# SahajMails v2.0.0
 
 **Personalized bulk email that runs on your machine.**
 
@@ -12,6 +12,8 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-0e8f5d)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-0e8f5d)](LICENSE)
 [![CI](https://github.com/sahajrajmalla/sahajmails/actions/workflows/ci.yml/badge.svg)](https://github.com/sahajrajmalla/sahajmails/actions)
+
+<img src="docs/app_screenshot.png" width="800" alt="SahajMails Web UI Screenshot">
 
 </div>
 
