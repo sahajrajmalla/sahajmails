@@ -42,24 +42,3 @@ jobs:
         with:
           name: dist
           path: dist/
-
-  publish:
-    name: Publish to PyPI
-    needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    environment:
-      name: pypi
-      url: https://pypi.org/p/sahajmails
-    permissions:
-      id-token: write     # required for Trusted Publishing
-      attestations: write # required for provenance attestations
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist/
-      - uses: actions/attest-build-provenance@v1
-        with:
-          subject-path: "dist/*"
-      - uses: pypa/gh-action-pypi-publish@release/v1
