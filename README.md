@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="sahajmails/server/static/img/logo.svg" width="72" alt="SahajMails">
+<img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/sahajmails/server/static/img/logo.svg" width="72" alt="SahajMails">
 
 # SahajMails v2.0.0
 
@@ -13,7 +13,7 @@
 [![License](https://img.shields.io/badge/license-MIT-0e8f5d)](LICENSE)
 [![CI](https://github.com/sahajrajmalla/sahajmails/actions/workflows/ci.yml/badge.svg)](https://github.com/sahajrajmalla/sahajmails/actions)
 
-<img src="assets/campaigns.png" width="800" alt="SahajMails Campaigns View">
+<img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/campaigns.png" width="800" alt="SahajMails Campaigns View">
 
 </div>
 
@@ -50,11 +50,11 @@ no account, no server of ours, and no telemetry.
 
 | Campaigns & Setup | Execution & Logs |
 | :---: | :---: |
-| <img src="assets/settings.png" width="400" alt="Settings configuration"> | <img src="assets/runs.png" width="400" alt="Run history"> |
+| <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/settings.png" width="400" alt="Settings configuration"> | <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/runs.png" width="400" alt="Run history"> |
 | **AI Personalization** | **Plugins & Extensibility** |
-| <img src="assets/ai_settings.png" width="400" alt="AI integration"> | <img src="assets/plugins.png" width="400" alt="Plugin management"> |
+| <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/ai_settings.png" width="400" alt="AI integration"> | <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/plugins.png" width="400" alt="Plugin management"> |
 | **Deliverability** | **Suppression List** |
-| <img src="assets/suppressed.png" width="400" alt="Suppressed emails"> | <img src="assets/campaigns.png" width="400" alt="Campaign dashboard"> |
+| <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/suppressed.png" width="400" alt="Suppressed emails"> | <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/assets/campaigns.png" width="400" alt="Campaign dashboard"> |
 
 ---
 
@@ -138,16 +138,16 @@ promise stays true.
 
 | | |
 |---|---|
-| [Getting started](docs/getting-started.md) | Install, connect, first send |
-| [AI personalization](docs/ai-personalization.md) | Slots, review, cost, local models |
-| [Deliverability](docs/deliverability.md) | SPF, DKIM, DMARC, unsubscribe, bounces |
-| [Providers](docs/providers.md) | Every preset, limits, app passwords |
-| [CLI reference](docs/cli-reference.md) | Every command and flag |
-| [Python API](docs/python-api.md) | Using it as a library |
-| [Writing plugins](docs/writing-plugins.md) | A worked example |
-| [Security](docs/security.md) | What runs where, and how it is protected |
-| [Troubleshooting](docs/troubleshooting.md) | When something goes wrong |
-| [Migrating from 1.x](docs/migrating-from-1.x.md) | What changed and why |
+| [Getting started](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/getting-started.md) | Install, connect, first send |
+| [AI personalization](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/ai-personalization.md) | Slots, review, cost, local models |
+| [Deliverability](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/deliverability.md) | SPF, DKIM, DMARC, unsubscribe, bounces |
+| [Providers](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/providers.md) | Every preset, limits, app passwords |
+| [CLI reference](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/cli-reference.md) | Every command and flag |
+| [Python API](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/python-api.md) | Using it as a library |
+| [Writing plugins](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/writing-plugins.md) | A worked example |
+| [Security](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/security.md) | What runs where, and how it is protected |
+| [Troubleshooting](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/troubleshooting.md) | When something goes wrong |
+| [Migrating from 1.x](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/migrating-from-1.x.md) | What changed and why |
 
 ---
 
@@ -158,8 +158,8 @@ allowlist (which is what stops DNS-rebinding attacks that same-origin policy doe
 not), CSRF headers, and a sandboxed template engine that escapes contact data so
 a spreadsheet can never inject markup into your mail. Passwords are kept in
 memory unless you explicitly ask to store them. Full detail in
-[docs/security.md](docs/security.md); report anything you find via
-[SECURITY.md](SECURITY.md).
+[docs/security.md](https://github.com/sahajrajmalla/sahajmails/blob/main/docs/security.md); report anything you find via
+[SECURITY.md](https://github.com/sahajrajmalla/sahajmails/blob/main/SECURITY.md).
 
 ---
 
