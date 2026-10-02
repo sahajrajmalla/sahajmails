@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SahajMails</title>
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="/static/css/app.css">
+<link rel="icon" type="image/svg+xml" href="/static/img/logo.svg">
+</head>
+<body>
+
+<!-- Icon sprite. Inline so there is no second request and no icon font. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21.4 2.6 10.9 13.1M21.4 2.6l-6.7 18.8-3.8-8.3-8.3-3.8Z"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></symbol>
+    <symbol id="i-block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 9l5-5 5 5M12 4v12"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 11l5 5 5-5M12 16V4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m20 6-11 11-5-5"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/>
+      <path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  </defs>
+</svg>
+
+<div class="app" id="app" hidden>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="/static/img/logo.svg" alt="">
+      <div class="brand-text">
+        <strong>SahajMails</strong>
+        <small id="version"></small>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <button class="nav-item" data-view="campaigns" aria-label="Campaigns">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-send"/></svg><span>Campaigns</span>
+        <span class="count" id="count-campaigns" hidden></span>
+      </button>
+      <button class="nav-item" data-view="runs" aria-label="Runs">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-history"/></svg><span>Runs</span>
+      </button>
+      <button class="nav-item" data-view="suppression" aria-label="Suppressed">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-block"/></svg><span>Suppressed</span>
+        <span class="count" id="count-suppressed" hidden></span>
+      </button>
+
+      <div class="nav-label">Setup</div>
+      <button class="nav-item" data-view="settings" aria-label="Settings">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-settings"/></svg><span>Settings</span>
+      </button>
+      <button class="nav-item" data-view="ai" aria-label="AI">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-sparkle"/></svg><span>AI</span>
+      </button>
+      <button class="nav-item" data-view="plugins" aria-label="Plugins">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-plug"/></svg><span>Plugins</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-foot">
+      <button class="ghost" id="theme-toggle" title="Switch light / dark">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-moon"/></svg><span>Theme</span>
+      </button>
+      <a class="ghost" href="/api/docs" target="_blank" rel="noopener">
+        <svg class="icon-svg" aria-hidden="true"><use href="#i-book"/></svg><span>API</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+
+    <!-- ══════════════════════════════════════════════ campaigns ══ -->
+    <section class="view" id="view-campaigns">
+      <header class="view-head">
+        <div>
+          <h1>Campaigns</h1>
+          <p class="sub" id="campaigns-sub"></p>
+        </div>
+        <button class="btn primary" id="new-campaign">
+          <svg class="icon-svg" aria-hidden="true"><use href="#i-plus"/></svg> New campaign
+        </button>
+      </header>
+
+      <div id="welcome-panel" hidden>
+        <div class="welcome">
+          <img class="welcome-logo" src="/static/img/logo.svg" alt="">
+          <h1>Send personalized bulk email, simply.</h1>
+          <p class="lede">
+            Everything runs on your machine. Your contacts and your password never leave it.
+          </p>
+          <ol class="steps">
+            <li>
+              <span class="step-n">1</span>
+              <div>
+                <h3>Connect your mail account</h3>
+                <p>Most providers want an app password rather than your normal one.
+                   We will tell you exactly how to get one.</p>
+                <button class="btn primary" data-goto="settings">Open settings</button>
+              </div>
+            </li>
+            <li>
+              <span class="step-n">2</span>
+              <div>
+                <h3>Try it with sample contacts</h3>
+                <p>See the whole flow in about thirty seconds, without your own file.</p>
+                <button class="btn" id="try-sample">Start a demo campaign</button>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div id="campaign-list" class="cards"></div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════ editor ══ -->
+    <section class="view" id="view-editor">
+      <div class="crumb">
+        <button data-goto="campaigns">Campaigns</button> <span>/</span>
+        <span id="crumb-name">Untitled</span>
+      </div>
+      <header class="view-head">
+        <input class="title-input" id="c-name" placeholder="Untitled campaign"
+               aria-label="Campaign name">
+        <div class="head-actions">
+          <span class="saved" id="save-state"></span>
+          <button class="btn" id="save-campaign">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-save"/></svg> Save
+          </button>
+          <button class="btn primary" id="open-review">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-eye"/></svg> Review
+          </button>
+        </div>
+      </header>
+
+      <div class="split">
+        <div class="pane pane-edit">
+          <div class="field">
+            <div class="field-head">
+              <label>Contacts</label>
+              <button class="btn small" id="change-contacts" hidden>
+                <svg class="icon-svg" aria-hidden="true"><use href="#i-upload"/></svg> Change file
+              </button>
+            </div>
+            <input type="file" id="c-contacts-input" hidden
+                   accept=".csv,.tsv,.txt,.xlsx,.xlsm">
+
+            <div class="dropzone" id="dropzone">
+              <svg class="icon-svg" aria-hidden="true"><use href="#i-table"/></svg>
+              <strong>Drop a CSV or Excel file here</strong>
+              <div class="row" style="justify-content:center;margin-top:10px">
+                <button class="btn small" id="browse">
+                  <svg class="icon-svg" aria-hidden="true"><use href="#i-upload"/></svg> Choose file
+                </button>
+                <button class="btn small subtle" id="use-sample">Use sample data</button>
+              </div>
+            </div>
+
+            <div class="contacts-loaded" id="contacts-loaded" hidden>
+              <div class="contacts-bar">
+                <div class="grow">
+                  <strong id="contacts-count"></strong>
+                  <small id="contacts-meta"></small>
+                </div>
+                <button class="btn small" id="toggle-table">
+                  <svg class="icon-svg" aria-hidden="true"><use href="#i-table"/></svg>
+                  <span id="toggle-table-label">Show table</span>
+                </button>
+                <button class="btn small" id="change-contacts-2">
+                  <svg class="icon-svg" aria-hidden="true"><use href="#i-upload"/></svg> Change file
+                </button>
+              </div>
+              <div class="table-wrap" id="contacts-table" hidden></div>
+            </div>
+            <div id="contacts-issues"></div>
+          </div>
+
+          <div class="field">
+            <label for="c-subject">Subject</label>
+            <input id="c-subject" placeholder="Hello {{ first_name }}">
+          </div>
+
+          <div class="field">
+            <label for="c-preheader">Preheader
+              <small>grey text shown after the subject in the inbox</small></label>
+            <input id="c-preheader" placeholder="One line summarising this email">
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <label>Message</label>
+              <div class="seg" id="format-seg" role="tablist" aria-label="Message format">
+                <button class="seg-item is-on" data-format="rich">Formatted</button>
+                <button class="seg-item" data-format="plain">Plain</button>
+                <button class="seg-item" data-format="markdown">Markdown</button>
+                <button class="seg-item" data-format="html">HTML</button>
+              </div>
+            </div>
+
+            <div class="editor-shell" id="rich-shell">
+              <div class="toolbar" id="toolbar">
+                <button data-cmd="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+                <button data-cmd="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+                <button data-cmd="underline" title="Underline"><u>U</u></button>
+                <span class="sep"></span>
+                <button data-block="h2" title="Heading">H</button>
+                <button data-cmd="insertUnorderedList" title="Bullet list">•</button>
+                <button data-cmd="insertOrderedList" title="Numbered list">1.</button>
+                <button data-block="blockquote" title="Quote">❞</button>
+                <span class="sep"></span>
+                <button data-link="1" title="Insert link">🔗</button>
+                <button data-cmd="removeFormat" title="Clear formatting">✕</button>
+              </div>
+              <div class="rich" id="c-rich" contenteditable="true" spellcheck="true"
+                   data-placeholder="Dear {{ first_name }}, …" role="textbox"
+                   aria-multiline="true" aria-label="Message body"></div>
+            </div>
+
+            <textarea id="c-body" rows="16" spellcheck="true" hidden
+                      aria-label="Message body"></textarea>
+            <p class="hint" id="format-hint"></p>
+          </div>
+
+          <div class="field" id="placeholder-field" hidden>
+            <label>Your columns <small>click to insert into the message</small></label>
+            <div class="chips" id="chips"></div>
+          </div>
+        </div>
+
+        <div class="pane pane-preview">
+          <div class="preview-bar">
+            <div class="seg" role="tablist" aria-label="Preview mode">
+              <button class="seg-item is-on" data-mode="desktop">Desktop</button>
+              <button class="seg-item" data-mode="mobile">Mobile</button>
+              <button class="seg-item" data-mode="text">Plain text</button>
+            </div>
+            <div class="recipient-switch">
+              <button class="icon-btn" id="prev-recipient" title="Previous recipient">
+                <svg class="icon-svg" aria-hidden="true"><use href="#i-left"/></svg></button>
+              <span id="recipient-label">no contacts yet</span>
+              <button class="icon-btn" id="next-recipient" title="Next recipient">
+                <svg class="icon-svg" aria-hidden="true"><use href="#i-right"/></svg></button>
+            </div>
+          </div>
+          <div class="preview-meta" id="preview-meta"></div>
+          <div class="preview-body" id="preview-body">
+            <div class="empty">Your email appears here as you type.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ review ══ -->
+    <section class="view" id="view-review">
+      <div class="crumb">
+        <button data-goto="campaigns">Campaigns</button> <span>/</span>
+        <button data-goto="editor" id="crumb-editor">Editor</button> <span>/</span>
+        <span>Review</span>
+      </div>
+      <header class="view-head">
+        <div>
+          <h1>Review</h1>
+          <p class="sub">Everything checked before a single email goes out.</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn" data-goto="editor">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-left"/></svg> Back to editor
+          </button>
+          <button class="btn primary" id="go-to-send" disabled>
+            Continue to send <svg class="icon-svg" aria-hidden="true"><use href="#i-right"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="send-grid">
+        <div class="card">
+          <h2>Pre-flight checks</h2>
+          <div id="preflight"><div class="empty">Checking…</div></div>
+        </div>
+
+        <div class="card">
+          <h2>Send yourself a test</h2>
+          <p class="muted">One email, to one address, using your first contact's data.
+             The best way to see exactly what people will receive.</p>
+          <div class="row" style="margin-top:14px">
+            <input id="test-to" placeholder="you@example.com" type="email">
+            <button class="btn" id="send-test">
+              <svg class="icon-svg" aria-hidden="true"><use href="#i-send"/></svg> Send test
+            </button>
+          </div>
+          <div id="test-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════════ send ══ -->
+    <section class="view" id="view-send">
+      <div class="crumb">
+        <button data-goto="campaigns">Campaigns</button> <span>/</span>
+        <button data-goto="editor">Editor</button> <span>/</span>
+        <button data-goto="review">Review</button> <span>/</span>
+        <span>Send</span>
+      </div>
+      <header class="view-head">
+        <div><h1>Send</h1><p class="sub" id="send-sub"></p></div>
+        <button class="btn" data-goto="review">
+          <svg class="icon-svg" aria-hidden="true"><use href="#i-left"/></svg> Back to review
+        </button>
+      </header>
+
+      <div class="send-grid">
+        <div class="card">
+          <h2>Ready to send</h2>
+          <div id="send-summary" class="summary"></div>
+          <label class="check">
+            <input type="checkbox" id="dry-run">
+            <span>Dry run
+              <small>Write .eml files to disk instead of sending. Open them in your
+              mail app to see exactly how they render.</small></span>
+          </label>
+          <button class="btn primary big" id="start-send">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-send"/></svg> Send now
+          </button>
+        </div>
+
+        <div class="card console" id="console" hidden>
+          <div class="console-head">
+            <h2 id="console-title">Sending…</h2>
+            <div class="head-actions">
+              <button class="btn small" id="pause-send">Pause</button>
+              <button class="btn small danger" id="cancel-send">Stop</button>
+            </div>
+          </div>
+          <div class="progress"><div class="bar" id="progress-bar"></div></div>
+          <div class="stats" id="send-stats"></div>
+          <div class="log" id="send-log"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════════ runs ══ -->
+    <section class="view" id="view-runs">
+      <header class="view-head">
+        <div><h1>Runs</h1><p class="sub">Every send, with what happened to each recipient.</p></div>
+      </header>
+      <div id="runs-list"></div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════ suppression ══ -->
+    <section class="view" id="view-suppression">
+      <header class="view-head">
+        <div>
+          <h1>Suppressed addresses</h1>
+          <p class="sub">Never mailed, on any campaign. Bounces and unsubscribes land here.</p>
+        </div>
+        <div class="head-actions">
+          <input type="file" id="suppress-file" accept=".csv,.txt" hidden>
+          <button class="btn" id="suppress-import">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-upload"/></svg> Import CSV
+          </button>
+          <button class="btn" id="suppress-export">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-download"/></svg> Export CSV
+          </button>
+        </div>
+      </header>
+      <div class="card">
+        <div class="row">
+          <input id="suppress-input" placeholder="one@example.com, two@example.com">
+          <button class="btn" id="suppress-add">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-plus"/></svg> Add
+          </button>
+        </div>
+      </div>
+      <div id="suppression-list"></div>
+    </section>
+
+    <!-- ═════════════════════════════════════════════════ settings ══ -->
+    <section class="view" id="view-settings">
+      <header class="view-head">
+        <div><h1>Settings</h1><p class="sub">Stored on this machine only.</p></div>
+        <div class="head-actions">
+          <button class="btn" id="test-connection">Test connection</button>
+          <button class="btn primary" id="save-settings">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-save"/></svg> Save settings
+          </button>
+        </div>
+      </header>
+
+      <div class="card">
+        <h2>Your mail account</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label for="s-sender-email">Your email address</label>
+            <input id="s-sender-email" type="email" placeholder="you@gmail.com"
+                   autocomplete="username">
+          </div>
+          <div class="field">
+            <label for="s-sender-name">Display name <small>shown as the sender</small></label>
+            <input id="s-sender-name" placeholder="Your Name">
+          </div>
+          <div class="field">
+            <label for="s-provider">Provider</label>
+            <select id="s-provider"></select>
+          </div>
+          <div class="field">
+            <label for="s-reply-to">Reply-To <small>optional</small></label>
+            <input id="s-reply-to" type="email" placeholder="replies@example.com">
+          </div>
+        </div>
+
+        <div id="custom-smtp" hidden>
+          <div class="grid-2">
+            <div class="field">
+              <label for="s-host">SMTP host</label>
+              <input id="s-host" placeholder="smtp.example.com">
+            </div>
+            <div class="field">
+              <label for="s-port">Port</label>
+              <input id="s-port" type="number" placeholder="587">
+            </div>
+          </div>
+          <div class="field">
+            <label for="s-security">Encryption</label>
+            <select id="s-security">
+              <option value="starttls">STARTTLS — usually port 587</option>
+              <option value="ssl">SSL/TLS — usually port 465</option>
+              <option value="none">None — only for a relay on localhost</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="s-password">App password</label>
+          <input id="s-password" type="password" autocomplete="current-password"
+                 placeholder="••••••••••••••••">
+          <p class="hint" id="provider-hint"></p>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="s-remember">
+          <span>Remember on this machine
+            <small>Saved to a file only your user account can read. Leave this off and
+            the password is kept in memory until you stop the server.</small></span>
+        </label>
+      </div>
+
+      <div class="card">
+        <h2>Unsubscribe</h2>
+        <p class="muted">Gmail and Yahoo have required a one-click unsubscribe header from
+           bulk senders since February 2024. Without one, more of your mail is filtered.</p>
+        <div class="grid-2" style="margin-top:14px">
+          <div class="field">
+            <label for="s-unsub-mailto">Unsubscribe address</label>
+            <input id="s-unsub-mailto" type="email" placeholder="unsubscribe@example.com">
+          </div>
+          <div class="field">
+            <label for="s-unsub-url">Unsubscribe URL <small>optional</small></label>
+            <input id="s-unsub-url" placeholder="https://example.com/unsubscribe">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Sending speed</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label for="s-rate">Messages per minute</label>
+            <input id="s-rate" type="number" min="1">
+          </div>
+          <div class="field">
+            <label for="s-concurrency">Parallel connections</label>
+            <input id="s-concurrency" type="number" min="1" max="10">
+          </div>
+        </div>
+        <p class="hint" id="quota-hint"></p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ ai ══ -->
+    <section class="view" id="view-ai">
+      <header class="view-head">
+        <div>
+          <h1>AI personalization</h1>
+          <p class="sub">Optional. The model fills labelled gaps and never sees the rest
+             of your email.</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn" id="ai-test">Test connection</button>
+          <button class="btn primary" id="ai-save">
+            <svg class="icon-svg" aria-hidden="true"><use href="#i-save"/></svg> Save
+          </button>
+        </div>
+      </header>
+
+      <div class="card">
+        <h2>How it works</h2>
+        <p class="muted">Wrap one sentence in an <code>ai</code> block. Everything outside it
+           is byte-identical for every recipient — that is the point.</p>
+        <pre style="margin:14px 0 0;padding:14px;background:var(--surface-2);border-radius:8px;
+                    overflow-x:auto;font-family:var(--mono);font-size:12.5px;line-height:1.7"
+        >Hi {{ first_name }},
+
+{% ai "opener" max_words=25 fallback="Hope your week is going well." %}
+One warm sentence about {{ company }}. No greeting, no exclamation marks.
+{% endai %}
+
+The rest of my email is the same for everyone.</pre>
+      </div>
+
+      <div class="card">
+        <h2>Provider</h2>
+        <div class="grid-2">
+          <div class="field">
+            <label for="ai-provider">Service</label>
+            <select id="ai-provider"></select>
+          </div>
+          <div class="field">
+            <label for="ai-model">Model</label>
+            <input id="ai-model" list="ai-models" placeholder="claude-sonnet-5">
+            <datalist id="ai-models"></datalist>
+          </div>
+        </div>
+        <div class="field" id="ai-key-field">
+          <label for="ai-key">API key</label>
+          <input id="ai-key" type="password" placeholder="sk-…" autocomplete="off">
+          <p class="hint" id="ai-hint"></p>
+        </div>
+        <div class="field" id="ai-url-field" hidden>
+          <label for="ai-base-url">Base URL</label>
+          <input id="ai-base-url" placeholder="http://localhost:11434/v1">
+          <p class="hint">Point this at Ollama, LM Studio, vLLM, Groq, OpenRouter — anything
+             that speaks the OpenAI chat API. Local models need no key and make no cloud call.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ plugins ══ -->
+    <section class="view" id="view-plugins">
+      <header class="view-head">
+        <div>
+          <h1>Plugins</h1>
+          <p class="sub">Add transports, AI providers, contact sources and UI panels
+             without forking.</p>
+        </div>
+      </header>
+      <div id="plugins-list"></div>
+      <div class="card">
+        <h2>Writing one</h2>
+        <p class="muted">Publish a package that exposes a <code>sahajmails.plugins</code>
+           entry point, or drop a <code>.py</code> file in your plugins folder and enable it
+           below. A plugin runs with your full privileges — the same trust model as any
+           <code>pip install</code>.</p>
+        <p class="hint" id="plugins-dir"></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<dialog class="confirm" id="confirm-send">
+  <h2 id="confirm-title">Send?</h2>
+  <div id="confirm-body"></div>
+  <div class="confirm-actions">
+    <button class="btn" id="confirm-no">Cancel</button>
+    <button class="btn primary" id="confirm-yes">Send</button>
+  </div>
+</dialog>
+
+<div class="toast-stack" id="toasts"></div>
+<div class="boot" id="boot"><span class="spinner"></span></div>
+
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

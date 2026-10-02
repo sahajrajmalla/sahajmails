@@ -1,0 +1,32 @@
+name: Bug report
+description: Something does not work
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste an app password, API key, or a real contact list.**
+        Security issues go to SECURITY.md instead of here.
+  - type: textarea
+    attributes:
+      label: What happened
+      description: What you did, what happened, and what you expected instead.
+    validations: { required: true }
+  - type: input
+    attributes:
+      label: Version
+      description: Output of `sahajmails --version`
+    validations: { required: true }
+  - type: input
+    attributes:
+      label: Python and OS
+      placeholder: "3.12 on macOS 15"
+    validations: { required: true }
+  - type: input
+    attributes:
+      label: Mail provider
+      placeholder: "Gmail / custom SMTP / …"
+  - type: textarea
+    attributes:
+      label: Error output
+      render: text

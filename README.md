@@ -1,163 +1,187 @@
 <div align="center">
 
-# SahajMails
+<img src="sahajmails/server/static/img/logo.svg" width="72" alt="SahajMails">
 
-**Send personalized bulk emails — Free, Secure, Simple**
+# SahajMails v2.0.0
 
-No servers. No coding. Just upload, type, send.
+**Personalized bulk email that runs on your machine.**
 
-[![PyPI version](https://badge.fury.io/py/sahajmails.svg)](https://badge.fury.io/py/sahajmails)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Tutorial](https://img.shields.io/badge/Tutorial-Medium-orange)](https://mallasahajraj.medium.com/how-to-send-personalized-bulk-emails-for-free-with-sahajmails-44f86d49d0a0)
+*Sahaj* means simple and natural. So does this.
+
+[![PyPI](https://img.shields.io/pypi/v/sahajmails?color=0e8f5d)](https://pypi.org/project/sahajmails/)
+[![Python](https://img.shields.io/badge/python-3.11%2B-0e8f5d)](https://python.org)
+[![License](https://img.shields.io/badge/license-MIT-0e8f5d)](LICENSE)
+[![CI](https://github.com/sahajrajmalla/sahajmails/actions/workflows/ci.yml/badge.svg)](https://github.com/sahajrajmalla/sahajmails/actions)
+
+<img src="assets/campaigns.png" width="800" alt="SahajMails Campaigns View">
 
 </div>
 
-
 ---
-
-## Features
-
-- **100% Local**: Your data never leaves your device  
-- **Gmail App Password**: Secure authentication (no real password used)  
-- **CSV/Excel Upload**: Supports `.csv`, `.xlsx`, `.xls`  
-- **Smart Placeholders**: `{{ firstName }}` — case and space tolerant  
-- **Live Preview**: Real-time HTML rendering  
-- **Test Email**: Send to yourself before bulk  
-- **Attachments**: PDFs, images, documents  
-- **Progress Tracking**: Real-time log and progress bar  
-- **Markdown & HTML**: Full email formatting support  
-- **Gmail-Safe**: 2-second delay between sends  
-
----
-
-## Quick Start
 
 ```bash
 pip install sahajmails
 sahajmails
 ```
 
-Open [http://localhost:8501](http://localhost:8501)
+That's it. A local web app opens. Load a spreadsheet, write your email, send.
+
+Your contacts, your password and your drafts never leave your computer. There is
+no account, no server of ours, and no telemetry.
 
 ---
 
-## 7-Step Guide
+## What it does
 
-
-1. **Upload** your contact list (must have `email` column)  
-2. **Enter** your Gmail and **App Password**  
-3. **Compose** email using `{{ columnName }}` placeholders  
-4. **Click** placeholder buttons to copy instantly  
-5. **Attach** files (optional)  
-6. **Preview** → **Send Test Email**  
-7. **Start Bulk Send** → Watch progress
-
-**Example CSV:**
-```csv
-email,firstName,company
-alice@example.com,Alice,Acme Corp
-bob@work.com,Bob,StartupXYZ
-```
-
-<div align="center">
-
-  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/1.png?raw=true" alt="Upload contacts and preview" width="100%"/>
-  <p><i>1. Upload CSV/Excel – Instant contact preview with detected columns</i></p>
-
-  <br><br>
-
-  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/2.png?raw=true" alt="Gmail login and email composer" width="100%"/>
-  <p><i>2–3. Secure Gmail login • Rich editor with one-click placeholder buttons</i></p>
-
-  <br><br>
-
-  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/3.png?raw=true" alt="Live preview and attachments" width="100%"/>
-  <p><i>4–5. Real-time live preview • Optional file attachments (up to 200 MB each)</i></p>
-
-  <br><br>
-
-  <img src="https://github.com/sahajrajmalla/sahajmails/blob/main/figures/4.png?raw=true" alt="Bulk sending with progress tracking" width="100%"/>
-  <p><i>6–7. Send test email • Start bulk send with real-time progress and completion status</i></p>
-
-</div>
-
+|  | |
+|---|---|
+| **Works with your own mailbox** | Gmail, Outlook, Yahoo, Zoho, iCloud, Fastmail, SES, Mailgun, Postmark, SendGrid, Resend, or any SMTP server. |
+| **Real personalization** | `{{ first_name }}` from any column, case-insensitive, with defaults and conditionals. |
+| **Write how you like** | A formatted editor, plain formal text, Markdown, or your own HTML. |
+| **Optional AI, fully controlled** | The model fills one labelled gap. It never sees the rest of your email, and you review every line before it sends. |
+| **Never sends twice** | Every attempt is journalled. Crash, close the lid, lose Wi-Fi — resume and nobody is mailed again. |
+| **Lands in inboxes** | Plain-text alternative, `List-Unsubscribe`, preheader, SPF/DKIM/DMARC check, spam-content linter. |
+| **Tells you before you send** | Pre-flight renders *every* contact and reports what will break. |
+| **Extensible** | Plugins add transports, AI providers, contact sources and UI panels. |
 
 ---
 
-## Gmail App Password (Required)
+## App Preview
 
-1. Go to [myaccount.google.com/security](https://myaccount.google.com/security)  
-2. Enable **2-Step Verification**  
-3. Search **"App Passwords"**  
-4. Select **App name** → **Generate**  
-5. Copy the **16-character password** → paste in the app
-
+| Campaigns & Setup | Execution & Logs |
+| :---: | :---: |
+| <img src="assets/settings.png" width="400" alt="Settings configuration"> | <img src="assets/runs.png" width="400" alt="Run history"> |
+| **AI Personalization** | **Plugins & Extensibility** |
+| <img src="assets/ai_settings.png" width="400" alt="AI integration"> | <img src="assets/plugins.png" width="400" alt="Plugin management"> |
+| **Deliverability** | **Suppression List** |
+| <img src="assets/suppressed.png" width="400" alt="Suppressed emails"> | <img src="assets/campaigns.png" width="400" alt="Campaign dashboard"> |
 
 ---
 
-## Installation
+## The 60-second version
 
 ```bash
 pip install sahajmails
+sahajmails                 # opens http://localhost:8000
 ```
 
-Or from source:
+1. **Settings** → your address and an app password → **Test connection**
+2. **New campaign** → drop your CSV → write your email → watch the live preview
+3. **Review** → pre-flight + send yourself a test
+4. **Send**
+
+Prefer a terminal? Everything is a subcommand:
 
 ```bash
-git clone https://github.com/sahajrajmalla/sahajmails.git
-cd sahajmails
-pip install -e .
+sahajmails init                                   # starter files here
+sahajmails check contacts.csv -t email.md -s "Hi {{ first_name }}"
+sahajmails send  contacts.csv -t email.md -s "Hi {{ first_name }}" --dry-run
+```
+
+Or import it:
+
+```python
+from sahajmails import send
+
+send(contacts="contacts.csv", template="email.md", subject="Hello {{ first_name }}")
 ```
 
 ---
 
-## Development
+## Writing the email
 
-```bash
-# Install dev dependencies
-pip install -e .[dev]
+Your spreadsheet columns become placeholders. Casing and spacing don't matter —
+`{{ firstName }}`, `{{ first_name }}` and `{{ FIRST_NAME }}` are the same column.
 
-# Run tests
-pytest tests/
-
-# Build package
-python -m build
 ```
+Hi {{ first_name | default("there") }},
+
+{% if company %}I saw the news about {{ company }} — congratulations.{% endif %}
+
+The rest of this email is identical for everyone.
+
+Best,
+Sahaj
+```
+
+`default(...)` matters: without it, a blank cell stops the send rather than
+quietly mailing "Hi ,". That is deliberate.
+
+### AI personalization
+
+Wrap the one sentence you want personalized. **Everything outside the block is
+byte-identical for every recipient** — that is enforced by the design, not by
+asking the model nicely.
+
+```
+Hi {{ first_name }},
+
+{% ai "opener" max_words=25 fallback="Hope your week is going well." %}
+One warm sentence about {{ company }}. No greeting, no exclamation marks.
+{% endai %}
+
+I'm writing because …
+```
+
+- The model receives **only** that instruction and that contact's variables.
+- Output is capped, stripped of markup, and checked against your banned phrases.
+- Anything that fails becomes your `fallback`. A flaky API can never block a send.
+- **You review every line before anything is sent**, and your edits are used verbatim.
+
+Works with Claude, OpenAI, or any OpenAI-compatible endpoint — including
+**Ollama and LM Studio running locally**, so the "nothing leaves your machine"
+promise stays true.
+
+---
+
+## Documentation
+
+| | |
+|---|---|
+| [Getting started](docs/getting-started.md) | Install, connect, first send |
+| [AI personalization](docs/ai-personalization.md) | Slots, review, cost, local models |
+| [Deliverability](docs/deliverability.md) | SPF, DKIM, DMARC, unsubscribe, bounces |
+| [Providers](docs/providers.md) | Every preset, limits, app passwords |
+| [CLI reference](docs/cli-reference.md) | Every command and flag |
+| [Python API](docs/python-api.md) | Using it as a library |
+| [Writing plugins](docs/writing-plugins.md) | A worked example |
+| [Security](docs/security.md) | What runs where, and how it is protected |
+| [Troubleshooting](docs/troubleshooting.md) | When something goes wrong |
+| [Migrating from 1.x](docs/migrating-from-1.x.md) | What changed and why |
+
+---
+
+## Security in one paragraph
+
+The app binds `127.0.0.1` only. It is protected by a session token, a `Host`
+allowlist (which is what stops DNS-rebinding attacks that same-origin policy does
+not), CSRF headers, and a sandboxed template engine that escapes contact data so
+a spreadsheet can never inject markup into your mail. Passwords are kept in
+memory unless you explicitly ask to store them. Full detail in
+[docs/security.md](docs/security.md); report anything you find via
+[SECURITY.md](SECURITY.md).
 
 ---
 
 ## Contributing
 
-Contributions are welcome!  
+```bash
+git clone https://github.com/sahajrajmalla/sahajmails.git
+cd sahajmails
+make install     # needs pip >= 25.1
+make check       # ruff, mypy --strict, pytest
+```
 
-1. Fork the repo  
-2. Create a branch: `git checkout -b feature/your-idea`  
-3. Commit changes: `git commit -m "feat: add X"`  
-4. Push and open a Pull Request  
-
-Please follow PEP 8 and include tests.
-
----
-
-## Security & Privacy
-
-- Runs **entirely on your machine**  
-- **No data is stored or transmitted**  
-- **Open source** under MIT License  
-- Uses **Gmail App Passwords** only  
+See [CONTRIBUTING.md](CONTRIBUTING.md). The whole test suite runs offline —
+there is a built-in SMTP stub and a fake AI backend, so you never need real
+credentials to develop.
 
 ---
 
 ## License
 
-[MIT License](LICENSE) – Free for personal and commercial use.
-
----
+[MIT](LICENSE) — free for personal and commercial use.
 
 <div align="center">
-
-Made with ❤️ by [Sahaj Raj Malla](https://github.com/sahajrajmalla)  
-
-
+<sub>Built by <a href="https://github.com/sahajrajmalla">Sahaj Raj Malla</a></sub>
 </div>
