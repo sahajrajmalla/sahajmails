@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/sahajrajmalla/sahajmails/main/sahajmails/server/static/img/logo.svg" width="72" alt="SahajMails">
 
-# SahajMails v2.0.0
+# SahajMails
 
 **Personalized bulk email that runs on your machine.**
 
