@@ -13,7 +13,7 @@ your machine and go straight to your own mail provider.
 
 from __future__ import annotations
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 __app_name__ = "SahajMails"
 
 from .contacts import ContactList, load_contacts
